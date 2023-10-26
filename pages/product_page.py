@@ -26,3 +26,10 @@ class ProductPage(BasePage):
         assert price_of_the_item == message_total_price_in_basket, \
             "price of the item is not equal total price in basket"
 
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.MESSAGE_ITEM_ADDED_TO_CART), \
+            "Success message is presented, but should not be"
+
+    def should_message_dissapeared_after_adding_product(self):
+        assert self.is_disappeared(*ProductPageLocators.MESSAGE_ITEM_ADDED_TO_CART), \
+            "Success message is not disappeared"
